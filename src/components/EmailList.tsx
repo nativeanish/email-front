@@ -1,5 +1,5 @@
-import React from 'react';
-import { Email } from '../types/email';
+import React from "react";
+import { Email } from "../types/email";
 
 interface EmailListProps {
   isDarkMode: boolean;
@@ -19,34 +19,48 @@ export function EmailList({
   return (
     <div
       className={`${
-        isEmailListVisible ? 'block' : 'hidden'
+        isEmailListVisible ? "block" : "hidden"
       } md:block w-full md:w-1/3 border-r ${
-        isDarkMode ? 'border-gray-800' : 'border-gray-200'
-      } overflow-y-auto`}
+        isDarkMode ? "border-gray-800" : "border-gray-200"
+      } h-[calc(100vh-4rem)]`}
     >
-      <div className={`flex items-center gap-4 p-4 border-b ${
-        isDarkMode ? 'border-gray-800' : 'border-gray-200'
-      }`}>
-        <button className={`px-3 py-1 text-sm font-medium rounded-full ${
-          isDarkMode
-            ? 'text-white bg-gray-900'
-            : 'text-gray-900 bg-gray-200'
-        }`}>
+      <div
+        className={`sticky top-0 flex items-center gap-4 p-4 border-b ${
+          isDarkMode ? "border-gray-800 bg-black" : "border-gray-200 bg-white"
+        }`}
+      >
+        <button
+          className={`px-3 py-1 text-sm font-medium rounded-full ${
+            isDarkMode ? "text-white bg-gray-900" : "text-gray-900 bg-gray-200"
+          }`}
+        >
           All Mails
         </button>
-        <button className={`px-3 py-1 text-sm font-medium ${
-          isDarkMode ? 'text-gray-400 hover:text-white' : 'text-gray-600 hover:text-gray-900'
-        }`}>
+        <button
+          className={`px-3 py-1 text-sm font-medium ${
+            isDarkMode
+              ? "text-gray-400 hover:text-white"
+              : "text-gray-600 hover:text-gray-900"
+          }`}
+        >
           Unread
         </button>
-        <button className={`px-3 py-1 text-sm font-medium ${
-          isDarkMode ? 'text-gray-400 hover:text-white' : 'text-gray-600 hover:text-gray-900'
-        }`}>
+        <button
+          className={`px-3 py-1 text-sm font-medium ${
+            isDarkMode
+              ? "text-gray-400 hover:text-white"
+              : "text-gray-600 hover:text-gray-900"
+          }`}
+        >
           Archive
         </button>
       </div>
 
-      <div className={`divide-y ${isDarkMode ? 'divide-gray-800' : 'divide-gray-200'}`}>
+      <div
+        className={`overflow-y-auto h-[calc(100%-4rem)] ${
+          isDarkMode ? "divide-gray-800" : "divide-gray-200"
+        } divide-y`}
+      >
         {emails.map((email) => (
           <button
             key={email.id}
@@ -54,14 +68,10 @@ export function EmailList({
             className={`w-full p-4 text-left ${
               selectedEmail?.id === email.id
                 ? isDarkMode
-                  ? 'bg-gray-900'
-                  : 'bg-gray-100'
-                : ''
-            } ${
-              isDarkMode
-                ? 'hover:bg-gray-900'
-                : 'hover:bg-gray-50'
-            }`}
+                  ? "bg-gray-900"
+                  : "bg-gray-100"
+                : ""
+            } ${isDarkMode ? "hover:bg-gray-900" : "hover:bg-gray-50"}`}
           >
             <div className="flex items-start gap-3">
               <img
@@ -77,26 +87,24 @@ export function EmailList({
                     className={`font-medium truncate ${
                       email.read
                         ? isDarkMode
-                          ? 'text-gray-300'
-                          : 'text-gray-600'
+                          ? "text-gray-300"
+                          : "text-gray-600"
                         : isDarkMode
-                        ? 'text-white'
-                        : 'text-gray-900'
+                        ? "text-white"
+                        : "text-gray-900"
                     }`}
                   >
                     {email.from}
                   </p>
-                  <p className="text-sm text-gray-400">
-                    {email.date}
-                  </p>
+                  <p className="text-sm text-gray-400">{email.date}</p>
                 </div>
                 <p
                   className={`text-sm font-medium truncate ${
                     email.read
-                      ? 'text-gray-400'
+                      ? "text-gray-400"
                       : isDarkMode
-                      ? 'text-white'
-                      : 'text-gray-900'
+                      ? "text-white"
+                      : "text-gray-900"
                   }`}
                 >
                   {email.subject}
